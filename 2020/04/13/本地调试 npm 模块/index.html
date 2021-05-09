@@ -4,17 +4,19 @@
   <meta charset="utf-8">
   
   
-  <title>Archiv: 2020/4 | 网络日记</title>
+  <title>本地调试 npm 模块 | 网络日记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <meta name="description" content="记录美好生活">
-<meta property="og:type" content="website">
-<meta property="og:title" content="网络日记">
-<meta property="og:url" content="https://xiangrenya.github.io/archives/2020/04/index.html">
+  <meta name="description" content="前言在项目开发过程中，项目会依赖一些独立发布的模块，模块的变更，需要结合项目进行联调，我们不可能发布 npm 上，再进行联调，原则上，需要在本地进行模块验证，通过后方可将模块发布到 npm 上。 本地如何调试 npm 模块npm link 用来在本地项目和本地 npm 模块之间建立连接，可以在本地进行模块联调。 在模块目录下，执行 npm link ，会在 npm 的全局安装目录下，创建软链接指向">
+<meta property="og:type" content="article">
+<meta property="og:title" content="本地调试 npm 模块">
+<meta property="og:url" content="https://xiangrenya.github.io/2020/04/13/%E6%9C%AC%E5%9C%B0%E8%B0%83%E8%AF%95%20npm%20%E6%A8%A1%E5%9D%97/index.html">
 <meta property="og:site_name" content="网络日记">
-<meta property="og:description" content="记录美好生活">
+<meta property="og:description" content="前言在项目开发过程中，项目会依赖一些独立发布的模块，模块的变更，需要结合项目进行联调，我们不可能发布 npm 上，再进行联调，原则上，需要在本地进行模块验证，通过后方可将模块发布到 npm 上。 本地如何调试 npm 模块npm link 用来在本地项目和本地 npm 模块之间建立连接，可以在本地进行模块联调。 在模块目录下，执行 npm link ，会在 npm 的全局安装目录下，创建软链接指向">
 <meta property="og:locale">
+<meta property="article:published_time" content="2020-04-12T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-05-09T06:57:09.345Z">
 <meta property="article:author" content="Allen">
-<meta property="article:tag" content="前端 html5 css3 javascript node react vue">
+<meta property="article:tag" content="npm">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternate" href="/atom.xml" title="网络日记" type="application/atom+xml">
@@ -76,153 +78,88 @@
 </header>
 
       <div class="outer">
-        <section id="main">
-  
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/04/15/Python%20%E8%87%AA%E5%8A%A8%E4%B8%8A%E4%BC%A0%20CDN%20%E8%B5%84%E6%BA%90%E5%88%B0%20OSS%20Bucket/" class="archive-article-date">
-  <time class="dt-published" datetime="2020-04-14T16:00:00.000Z" itemprop="datePublished">Apr 15</time>
+        <section id="main"><article id="post-本地调试 npm 模块" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/04/13/%E6%9C%AC%E5%9C%B0%E8%B0%83%E8%AF%95%20npm%20%E6%A8%A1%E5%9D%97/" class="article-date">
+  <time class="dt-published" datetime="2020-04-12T16:00:00.000Z" itemprop="datePublished">2020-04-13</time>
 </a>
-      
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/15/Python%20%E8%87%AA%E5%8A%A8%E4%B8%8A%E4%BC%A0%20CDN%20%E8%B5%84%E6%BA%90%E5%88%B0%20OSS%20Bucket/">Python 自动上传 CDN 资源到 OSS Bucket</a>
+    <h1 class="p-name article-title" itemprop="headline name">
+      本地调试 npm 模块
     </h1>
   
 
-    </header>
-  </div>
-</article>
-  
+      </header>
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/04/15/Selenium%20%E5%AE%9E%E7%8E%B0%20Web%20UI%20%E8%87%AA%E5%8A%A8%E5%8C%96/" class="archive-article-date">
-  <time class="dt-published" datetime="2020-04-14T16:00:00.000Z" itemprop="datePublished">Apr 15</time>
-</a>
+    <div class="e-content article-entry" itemprop="articleBody">
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/15/Selenium%20%E5%AE%9E%E7%8E%B0%20Web%20UI%20%E8%87%AA%E5%8A%A8%E5%8C%96/">Selenium 实现 Web UI 自动化</a>
-    </h1>
-  
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>在项目开发过程中，项目会依赖一些独立发布的模块，模块的变更，需要结合项目进行联调，我们不可能发布 npm 上，再进行联调，原则上，需要在本地进行模块验证，通过后方可将模块发布到 npm 上。</p>
+<h2 id="本地如何调试-npm-模块"><a href="#本地如何调试-npm-模块" class="headerlink" title="本地如何调试 npm 模块"></a>本地如何调试 npm 模块</h2><p>npm link 用来在本地项目和本地 npm 模块之间建立连接，可以在本地进行模块联调。</p>
+<p>在模块目录下，执行 <code>npm link</code> ，会在 npm 的全局安装目录下，创建软链接指向当前模块的目录。</p>
+<p>npm 全局安装目录一般为 <code>&#123;prefix&#125;/lib/node_modules</code>，其中的 prefix 可以用 <code>npm prefix -g</code> 来查看。</p>
+<p>在项目目录下，执行 <code>npm link my-module</code> ，会在当前项目的 node_modules 下创建一个软链接，指向全局安装的 my-module 。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd /path/to/my-module</span><br><span class="line">npm link</span><br><span class="line">cd /path/to/my-project</span><br><span class="line">npm link my-module-name</span><br></pre></td></tr></table></figure>
 
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/04/15/%E6%AD%A6%E8%A3%85%E4%BD%A0%E7%9A%84%E7%BB%88%E7%AB%AF%20Terminal/" class="archive-article-date">
-  <time class="dt-published" datetime="2020-04-14T16:00:00.000Z" itemprop="datePublished">Apr 15</time>
-</a>
+<h2 id="项目和模块在同一目录下"><a href="#项目和模块在同一目录下" class="headerlink" title="项目和模块在同一目录下"></a>项目和模块在同一目录下</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /path/to/my-project</span><br><span class="line">npm link ../my-module</span><br></pre></td></tr></table></figure>
+
+<p>第二行代码 <code>npm link ../my-module</code>，等同于</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">(cd /path/to/my-module; npm link)</span><br><span class="line">npm link redis</span><br></pre></td></tr></table></figure>
+
+<h2 id="解除-link"><a href="#解除-link" class="headerlink" title="解除 link"></a>解除 link</h2><p>解除项目和模块的链接</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /path/to/my-project</span><br><span class="line">npm unlink my-module-name</span><br></pre></td></tr></table></figure>
+
+<p>解除模块的全局链接</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /path/to/my-module</span><br><span class="line">npm unlink my-module-name</span><br></pre></td></tr></table></figure>
+
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://docs.npmjs.com/cli/v7/commands/npm-link">npm-link</a></li>
+</ul>
+
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/15/%E6%AD%A6%E8%A3%85%E4%BD%A0%E7%9A%84%E7%BB%88%E7%AB%AF%20Terminal/">武装你的终端 Terminal</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/04/14/%E5%B8%B8%E7%94%A8%E7%9A%84%20SQL%20%E8%AF%AD%E5%8F%A5/" class="archive-article-date">
-  <time class="dt-published" datetime="2020-04-13T16:00:00.000Z" itemprop="datePublished">Apr 14</time>
-</a>
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xiangrenya.github.io/2020/04/13/%E6%9C%AC%E5%9C%B0%E8%B0%83%E8%AF%95%20npm%20%E6%A8%A1%E5%9D%97/" data-id="ckogtqlhz000v5o9fewe17rl5" data-title="本地调试 npm 模块" class="article-share-link">Teilen</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/14/%E5%B8%B8%E7%94%A8%E7%9A%84%20SQL%20%E8%AF%AD%E5%8F%A5/">常用的 SQL 语句</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/04/13/Windows%20%E7%B3%BB%E7%BB%9F%E4%B8%8B%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E8%BF%9E%E6%8E%A5%20CentOS%207%20%E7%B3%BB%E7%BB%9F/" class="archive-article-date">
-  <time class="dt-published" datetime="2020-04-12T16:00:00.000Z" itemprop="datePublished">Apr 13</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/13/Windows%20%E7%B3%BB%E7%BB%9F%E4%B8%8B%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E8%BF%9E%E6%8E%A5%20CentOS%207%20%E7%B3%BB%E7%BB%9F/">Windows 系统下远程桌面连接 CentOS 7 系统</a>
-    </h1>
-  
-
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/04/13/%E6%9C%AC%E5%9C%B0%E8%B0%83%E8%AF%95%20npm%20%E6%A8%A1%E5%9D%97/" class="archive-article-date">
-  <time class="dt-published" datetime="2020-04-12T16:00:00.000Z" itemprop="datePublished">Apr 13</time>
-</a>
       
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/13/%E6%9C%AC%E5%9C%B0%E8%B0%83%E8%AF%95%20npm%20%E6%A8%A1%E5%9D%97/">本地调试 npm 模块</a>
-    </h1>
-  
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/npm/" rel="tag">npm</a></li></ul>
 
-    </header>
+    </footer>
   </div>
-</article>
   
     
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      <a href="/2020/04/12/%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7%E8%AE%BE%E7%BD%AE%E7%BD%91%E7%BB%9C%E4%BB%A3%E7%90%86/" class="archive-article-date">
-  <time class="dt-published" datetime="2020-04-11T16:00:00.000Z" itemprop="datePublished">Apr 12</time>
-</a>
-      
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/12/%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7%E8%AE%BE%E7%BD%AE%E7%BD%91%E7%BB%9C%E4%BB%A3%E7%90%86/">命令行工具设置网络代理</a>
-    </h1>
+    <a href="/2020/04/13/Windows%20%E7%B3%BB%E7%BB%9F%E4%B8%8B%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E8%BF%9E%E6%8E%A5%20CentOS%207%20%E7%B3%BB%E7%BB%9F/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          Windows 系统下远程桌面连接 CentOS 7 系统
+        
+      </div>
+    </a>
   
+  
+    <a href="/2020/04/12/%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7%E8%AE%BE%E7%BD%AE%E7%BD%91%E7%BB%9C%E4%BB%A3%E7%90%86/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">命令行工具设置网络代理</div>
+    </a>
+  
+</nav>
 
-    </header>
-  </div>
+  
 </article>
-  
-  
-    </div></section>
-  
 
 
 </section>
