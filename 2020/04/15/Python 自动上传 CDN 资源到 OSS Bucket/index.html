@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Python 自动上传 CDN 资源到 OSS Bucket | 网络日记</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="前言最初是使用 OSS-Browser 客户端上传前端静态资源到 OSS Bucket 里的，需要针对不同的环境，上传不同的静态资源到 OSS Bucket，每次都要切换账号，非常的笨拙机械，同时也无法也加入到自动化流程里，所以才有了这篇文章。  安装 oss2通过 pip 工具安装 oss2 1pip install oss2  授权认证通过 oss2.Auth 方法进行授权认证 123acce">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python 自动上传 CDN 资源到 OSS Bucket">
+<meta property="og:url" content="https://xiangrenya.github.io/2020/04/15/Python%20%E8%87%AA%E5%8A%A8%E4%B8%8A%E4%BC%A0%20CDN%20%E8%B5%84%E6%BA%90%E5%88%B0%20OSS%20Bucket/index.html">
+<meta property="og:site_name" content="网络日记">
+<meta property="og:description" content="前言最初是使用 OSS-Browser 客户端上传前端静态资源到 OSS Bucket 里的，需要针对不同的环境，上传不同的静态资源到 OSS Bucket，每次都要切换账号，非常的笨拙机械，同时也无法也加入到自动化流程里，所以才有了这篇文章。  安装 oss2通过 pip 工具安装 oss2 1pip install oss2  授权认证通过 oss2.Auth 方法进行授权认证 123acce">
+<meta property="og:locale">
+<meta property="og:image" content="https://xiangrenya.github.io/assets/images/oss-browser.png">
+<meta property="article:published_time" content="2020-04-14T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-05-09T03:54:54.130Z">
+<meta property="article:author" content="Allen">
+<meta property="article:tag" content="oss">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://xiangrenya.github.io/assets/images/oss-browser.png">
+  
+    <link rel="alternate" href="/atom.xml" title="网络日记" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">网络日记</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">写字的地方</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://xiangrenya.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Python 自动上传 CDN 资源到 OSS Bucket" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/04/15/Python%20%E8%87%AA%E5%8A%A8%E4%B8%8A%E4%BC%A0%20CDN%20%E8%B5%84%E6%BA%90%E5%88%B0%20OSS%20Bucket/" class="article-date">
+  <time class="dt-published" datetime="2020-04-14T16:00:00.000Z" itemprop="datePublished">2020-04-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Python 自动上传 CDN 资源到 OSS Bucket
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>最初是使用 OSS-Browser 客户端上传前端静态资源到 OSS Bucket 里的，需要针对不同的环境，上传不同的静态资源到 OSS Bucket，每次都要切换账号，非常的笨拙机械，同时也无法也加入到自动化流程里，所以才有了这篇文章。</p>
+<p><img src="/assets/images/oss-browser.png" alt="oss-browser.png"></p>
+<h2 id="安装-oss2"><a href="#安装-oss2" class="headerlink" title="安装 oss2"></a>安装 oss2</h2><p>通过 pip 工具安装 oss2</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install oss2</span><br></pre></td></tr></table></figure>
+
+<h2 id="授权认证"><a href="#授权认证" class="headerlink" title="授权认证"></a>授权认证</h2><p>通过 <code>oss2.Auth</code> 方法进行授权认证</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">access_key_id = <span class="string">&#x27;6MKOqxGiGU4AUk44&#x27;</span></span><br><span class="line">access_key_secret = <span class="string">&#x27;ufu7nS8kS59awNihtjSonMETLI0KLy&#x27;</span></span><br><span class="line">auth = oss2.Auth(access_key_id, access_key_secret)</span><br></pre></td></tr></table></figure>
+
+<h2 id="获取-bucket-对象"><a href="#获取-bucket-对象" class="headerlink" title="获取 bucket 对象"></a>获取 bucket 对象</h2><p>通过 <code>oss2.Bucket</code> 方法获取 bucket 对象</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">endpoint = <span class="string">&#x27;https://oss-cn-shanghai.aliyuncs.com&#x27;</span></span><br><span class="line">bucket_name = <span class="string">&#x27;static&#x27;</span></span><br><span class="line">bucket = oss2.Bucket(auth, endpoint, bucket_name)</span><br></pre></td></tr></table></figure>
+
+<h2 id="上传文件"><a href="#上传文件" class="headerlink" title="上传文件"></a>上传文件</h2><p>通过 <code> bucket.put_object_from_file</code> 方法上传本地文件到 OSS Bucket 里</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">key = <span class="string">&#x27;/v1.0.0/index.html&#x27;</span></span><br><span class="line">filename = <span class="string">r&#x27;D:\project\index.html&#x27;</span></span><br><span class="line">bucket.put_object_from_file(key, filename)</span><br></pre></td></tr></table></figure>
+
+<h2 id="判断文件是否存在"><a href="#判断文件是否存在" class="headerlink" title="判断文件是否存在"></a>判断文件是否存在</h2><p>通过 <code>bucket.object_exists</code> 方法判断 OSS Bucket 是否已经存在相关资源。在上传文件之前，最好验证一下 key 是否存在，避免误操作，覆盖已有的线上资源，造成线上事故</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">key = <span class="string">&#x27;/v1.0.0&#x27;</span></span><br><span class="line">bucket.object_exists(key)</span><br></pre></td></tr></table></figure>
+
+<h2 id="整体实现"><a href="#整体实现" class="headerlink" title="整体实现"></a>整体实现</h2><p>封装获取 OSS Bucket 对象的方法，根据不同的环境，返回不同 bucket 对象</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_bucket</span>(<span class="params">env</span>):</span></span><br><span class="line">    endpoint = <span class="string">&#x27;https://oss-cn-shanghai.aliyuncs.com&#x27;</span></span><br><span class="line">    env_bucket = &#123;</span><br><span class="line">        <span class="string">&#x27;dev&#x27;</span>: &#123;</span><br><span class="line">            <span class="string">&#x27;access_key_id&#x27;</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;access_key_secret&#x27;</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;bucket_name&#x27;</span>: <span class="string">&#x27;&#x27;</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="string">&#x27;prod&#x27;</span>: &#123;</span><br><span class="line">            <span class="string">&#x27;access_key_id&#x27;</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;access_key_secret&#x27;</span>: <span class="string">&#x27;&#x27;</span>,</span><br><span class="line">            <span class="string">&#x27;bucket_name&#x27;</span>: <span class="string">&#x27;&#x27;</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    auth = oss2.Auth(env_bucket[env][<span class="string">&#x27;access_key_id&#x27;</span>], env_bucket[env][<span class="string">&#x27;access_key_secret&#x27;</span>])</span><br><span class="line">    bucket = oss2.Bucket(auth, endpoint, env_bucket[env][<span class="string">&#x27;bucket_name&#x27;</span>])</span><br><span class="line">    <span class="keyword">return</span> bucket</span><br></pre></td></tr></table></figure>
+
+<p>批量上传本地前端资源到 OSS Bucket 里</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    env = <span class="string">&#x27;dev&#x27;</span></span><br><span class="line">    version = <span class="string">&#x27;v1.0.0&#x27;</span></span><br><span class="line">    source_folder = <span class="string">r&#x27;D:\project&#x27;</span></span><br><span class="line">    bucket = get_bucket(env)</span><br><span class="line">    dest_folder = <span class="string">&#x27;static/%s&#x27;</span> % version</span><br><span class="line">    <span class="keyword">if</span> bucket.object_exists(dest_folder):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;%s 已存在，不可以重复上传文件&#x27;</span> % dest_folder)</span><br><span class="line">        exit()</span><br><span class="line">    files = os.listdir(source_folder)</span><br><span class="line">    total = <span class="built_in">len</span>(files)</span><br><span class="line">    count = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> file <span class="keyword">in</span> files:</span><br><span class="line">        key = dest_folder + <span class="string">&#x27;/&#x27;</span> + file</span><br><span class="line">        filename = source_folder + <span class="string">&#x27;\\&#x27;</span> + file</span><br><span class="line">        bucket.put_object_from_file(key, filename)</span><br><span class="line">        count += <span class="number">1</span></span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&#x27;&#123;0&#125; [&#123;1&#125;/&#123;2&#125;]&#x27;</span>.<span class="built_in">format</span>(file, count, total))</span><br></pre></td></tr></table></figure>
+
+<p>通过 <code>os.listdir</code> 列出源目录下的文件列表，通过 <code>count</code> 和 <code>total</code> 来观察前端静态资源的上传进度。</p>
+<p>参考资料</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://help.aliyun.com/product/31815.html?spm=a2c4g.11174283.6.540.391f7da2Rpvw7Q">对象存储 OSS</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/aliyun/aliyun-oss-python-sdk">aliyun-oss-python-sdk</a></li>
+<li><a target="_blank" rel="noopener" href="https://aliyun-oss-python-sdk.readthedocs.io/en/latest/api.html#">oss2 接口文档</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xiangrenya.github.io/2020/04/15/Python%20%E8%87%AA%E5%8A%A8%E4%B8%8A%E4%BC%A0%20CDN%20%E8%B5%84%E6%BA%90%E5%88%B0%20OSS%20Bucket/" data-id="ckogpfhe10001kl9f2yvz9rs7" data-title="Python 自动上传 CDN 资源到 OSS Bucket" class="article-share-link">Teilen</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/oss/" rel="tag">oss</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/04/15/Selenium%20%E5%AE%9E%E7%8E%B0%20Web%20UI%20%E8%87%AA%E5%8A%A8%E5%8C%96/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          Selenium 实现 Web UI 自动化
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/04/15/%E6%AD%A6%E8%A3%85%E4%BD%A0%E7%9A%84%E7%BB%88%E7%AB%AF%20Terminal/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">武装你的终端 Terminal</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%87%AA%E5%8A%A8%E5%8C%96/">自动化</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/api/" rel="tag">api</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/centos/" rel="tag">centos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jwt/" rel="tag">jwt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oss/" rel="tag">oss</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/selenium/" rel="tag">selenium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/" rel="tag">ssh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/terminal/" rel="tag">terminal</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/yApi/" rel="tag">yApi</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/api/" style="font-size: 10px;">api</a> <a href="/tags/centos/" style="font-size: 10px;">centos</a> <a href="/tags/jwt/" style="font-size: 10px;">jwt</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/oss/" style="font-size: 10px;">oss</a> <a href="/tags/selenium/" style="font-size: 10px;">selenium</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/terminal/" style="font-size: 20px;">terminal</a> <a href="/tags/yApi/" style="font-size: 10px;">yApi</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/04/15/Selenium%20%E5%AE%9E%E7%8E%B0%20Web%20UI%20%E8%87%AA%E5%8A%A8%E5%8C%96/">Selenium 实现 Web UI 自动化</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/15/Python%20%E8%87%AA%E5%8A%A8%E4%B8%8A%E4%BC%A0%20CDN%20%E8%B5%84%E6%BA%90%E5%88%B0%20OSS%20Bucket/">Python 自动上传 CDN 资源到 OSS Bucket</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/15/%E6%AD%A6%E8%A3%85%E4%BD%A0%E7%9A%84%E7%BB%88%E7%AB%AF%20Terminal/">武装你的终端 Terminal</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/14/%E5%B8%B8%E7%94%A8%E7%9A%84%20SQL%20%E8%AF%AD%E5%8F%A5/">常用的 SQL 语句</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/13/Windows%20%E7%B3%BB%E7%BB%9F%E4%B8%8B%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E8%BF%9E%E6%8E%A5%20CentOS%207%20%E7%B3%BB%E7%BB%9F/">Windows 系统下远程桌面连接 CentOS 7 系统</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 Allen<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
