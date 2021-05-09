@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>常用的 SQL 语句 | 网络日记</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="下面整理记录的一些常用的 MySQL 数据库操作语句，方便回顾和查阅。 数据库操作12345CREATE DATABASE db_name;SHOW CREATE DATABASE db_name;SHOW DATABASES;USE db_name;DROP DATABASE db_name;  表操作123456789101112131415CREATE TABLE tb_name (  id">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常用的 SQL 语句">
+<meta property="og:url" content="https://xiangrenya.github.io/2020/04/14/%E5%B8%B8%E7%94%A8%E7%9A%84%20SQL%20%E8%AF%AD%E5%8F%A5/index.html">
+<meta property="og:site_name" content="网络日记">
+<meta property="og:description" content="下面整理记录的一些常用的 MySQL 数据库操作语句，方便回顾和查阅。 数据库操作12345CREATE DATABASE db_name;SHOW CREATE DATABASE db_name;SHOW DATABASES;USE db_name;DROP DATABASE db_name;  表操作123456789101112131415CREATE TABLE tb_name (  id">
+<meta property="og:locale">
+<meta property="article:published_time" content="2020-04-13T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-05-09T02:23:09.262Z">
+<meta property="article:author" content="Allen">
+<meta property="article:tag" content="mysql">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="网络日记" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">网络日记</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">写字的地方</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Suche"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://xiangrenya.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-常用的 SQL 语句" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/04/14/%E5%B8%B8%E7%94%A8%E7%9A%84%20SQL%20%E8%AF%AD%E5%8F%A5/" class="article-date">
+  <time class="dt-published" datetime="2020-04-13T16:00:00.000Z" itemprop="datePublished">2020-04-14</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      常用的 SQL 语句
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>下面整理记录的一些常用的 MySQL 数据库操作语句，方便回顾和查阅。</p>
+<h2 id="数据库操作"><a href="#数据库操作" class="headerlink" title="数据库操作"></a>数据库操作</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> DATABASE db_name;</span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">CREATE</span> DATABASE db_name;</span><br><span class="line"><span class="keyword">SHOW</span> DATABASES;</span><br><span class="line">USE db_name;</span><br><span class="line"><span class="keyword">DROP</span> DATABASE db_name;</span><br></pre></td></tr></table></figure>
+
+<h2 id="表操作"><a href="#表操作" class="headerlink" title="表操作"></a>表操作</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> tb_name (</span><br><span class="line">  id TINYINT UNSIGNED <span class="keyword">NOT</span> <span class="keyword">NULL</span> AUTO_INCREMENT,</span><br><span class="line">  name <span class="type">VARCHAR</span>(<span class="number">60</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>,</span><br><span class="line">  score TINYINT UNSIGNED <span class="keyword">NOT</span> <span class="keyword">NULL</span> <span class="keyword">DEFAULT</span> <span class="number">0</span>,</span><br><span class="line">  <span class="keyword">PRIMARY</span> KEY(id)</span><br><span class="line">) ENGINE <span class="operator">=</span> InnoDB <span class="keyword">DEFAULT</span> charset <span class="operator">=</span> utf8;</span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">CREATE</span> <span class="keyword">TABLE</span> tb_name;</span><br><span class="line"><span class="keyword">SHOW</span> TABLES;</span><br><span class="line"><span class="keyword">DESCRIBE</span> tb_name;</span><br><span class="line"><span class="comment">-- show table status vertically</span></span><br><span class="line"><span class="keyword">SHOW</span> <span class="keyword">TABLE</span> STATUS <span class="keyword">LIKE</span> <span class="string">&#x27;tb_name&#x27;</span>\G;</span><br><span class="line"><span class="comment">-- rename</span></span><br><span class="line">RENAME <span class="keyword">TABLE</span> tb_name <span class="keyword">TO</span> new_tb_name</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> tb_name RENAME new_tb_name;</span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> IF <span class="keyword">EXISTS</span> tb_name;</span><br></pre></td></tr></table></figure>
+
+<h2 id="列操作"><a href="#列操作" class="headerlink" title="列操作"></a>列操作</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- show columns，equal describe tb_name</span></span><br><span class="line"><span class="keyword">SHOW</span> COLUMNS <span class="keyword">FROM</span> tb_name;</span><br><span class="line"><span class="comment">-- edit column</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> tb_name <span class="keyword">ADD</span> col_name <span class="type">VARCHAR</span>(<span class="number">80</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>;</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> tb_name MODIFY col_name <span class="type">INT</span> <span class="keyword">DEFAULT</span> <span class="number">0</span>;</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> tb_name CHANGE col_name new_col_name <span class="type">SMALLINT</span>(<span class="number">4</span>) <span class="keyword">NOT</span> <span class="keyword">NULL</span>;</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> tb_name <span class="keyword">ALTER</span> col_name <span class="keyword">SET</span> <span class="keyword">DEFAULT</span> <span class="number">0</span>;</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> tb_name <span class="keyword">DROP</span> col_name;</span><br><span class="line"><span class="comment">-- primary key</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> tb_name <span class="keyword">ADD</span> <span class="keyword">PRIMARY</span> KEY(col_name);</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> tb_name <span class="keyword">DROP</span> <span class="keyword">PRIMARY</span> KEY;</span><br><span class="line"><span class="comment">-- foreign key</span></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> tb_name <span class="keyword">ADD</span> <span class="keyword">CONSTRAINT</span> fk_name <span class="keyword">FOREIGN</span> KEY (col_name) <span class="keyword">REFERENCES</span> tb2_name(col_name);</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> tb_name <span class="keyword">DROP</span> <span class="keyword">FOREIGN</span> KEY fk_name;</span><br><span class="line"><span class="comment">-- index</span></span><br><span class="line"><span class="keyword">CREATE</span> [<span class="keyword">UNIQUE</span>] INDEX idx_name <span class="keyword">ON</span> tb_name(col_name);</span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> tb_name <span class="keyword">DROP</span> INDEX idx_name;</span><br></pre></td></tr></table></figure>
+
+<h2 id="权限操作"><a href="#权限操作" class="headerlink" title="权限操作"></a>权限操作</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- change password</span></span><br><span class="line"><span class="keyword">SET</span> PASSWORD <span class="keyword">FOR</span> <span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> <span class="operator">=</span> PASSWORD(<span class="string">&#x27;newpassword&#x27;</span>);</span><br><span class="line"><span class="comment">-- create user and grant privileges</span></span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span>, <span class="keyword">INSERT</span>, UPDATE, <span class="keyword">DELETE</span>, <span class="keyword">CREATE</span>, INDEX, <span class="keyword">ALTER</span>, <span class="keyword">DROP</span> <span class="keyword">ON</span> db_name.tb_name IDENTIFIED <span class="keyword">BY</span> <span class="string">&#x27;password&#x27;</span> <span class="keyword">WITH</span> <span class="keyword">GRANT</span> OPTION;</span><br><span class="line"><span class="comment">-- revoke privileges</span></span><br><span class="line"><span class="keyword">REVOKE</span> <span class="keyword">ALL</span>, <span class="keyword">GRANT</span> <span class="keyword">ON</span> db_name.tb_name <span class="keyword">FROM</span> user_name;</span><br><span class="line"><span class="comment">-- show privileges</span></span><br><span class="line"><span class="keyword">SHOW</span> GRANTS <span class="keyword">FOR</span> user_name;</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="增删查改"><a href="#增删查改" class="headerlink" title="增删查改"></a>增删查改</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- select</span></span><br><span class="line"><span class="keyword">SELECT</span> col1, col2 <span class="keyword">FROM</span> tb_name;</span><br><span class="line"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> col1, col2 <span class="keyword">FROM</span> tb_name;</span><br><span class="line"><span class="comment">-- null</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> tb_name <span class="keyword">WHERE</span> col1 <span class="keyword">IS</span> <span class="keyword">NULL</span>;</span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> tb_name <span class="keyword">WHERE</span> col1 <span class="keyword">IS</span> <span class="keyword">NOT</span> <span class="keyword">NULL</span>;</span><br><span class="line"><span class="comment">-- order</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> tb_name <span class="keyword">WHERE</span> col1 <span class="operator">=</span> val1 <span class="keyword">ORDER</span> <span class="keyword">BY</span> col2 <span class="keyword">ASC</span>, col3 <span class="keyword">DESC</span>;</span><br><span class="line"><span class="comment">-- pagination</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> tb_name LIMIT <span class="number">10</span>;</span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> tb_name LIMIT <span class="number">0</span>, <span class="number">10</span>;</span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> tb_name LIMIT <span class="number">10</span> <span class="keyword">OFFSET</span> <span class="number">0</span>;</span><br><span class="line"><span class="comment">-- like</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> tb_name <span class="keyword">WHERE</span> col1 <span class="keyword">LIKE</span> <span class="string">&#x27;abc%&#x27;</span>;</span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> tb_name <span class="keyword">WHERE</span> col1 <span class="keyword">NOT</span> <span class="keyword">LIKE</span> <span class="string">&#x27;_abc&#x27;</span>;</span><br><span class="line"><span class="comment">-- in</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> tb_name <span class="keyword">WHERE</span> col1 <span class="keyword">IN</span> (val1, val2, val3);</span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> tb_name <span class="keyword">WHERE</span> col1 <span class="keyword">IN</span> (<span class="keyword">SELECT</span> col1 <span class="keyword">FROM</span> tb2_name);</span><br><span class="line"><span class="comment">-- between</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> tb_name <span class="keyword">WHERE</span> col1 <span class="keyword">BETWEEN</span> val1 <span class="keyword">AND</span> val2;</span><br><span class="line"><span class="comment">-- group</span></span><br><span class="line"><span class="keyword">SELECT</span> col1, <span class="built_in">count</span>(<span class="operator">*</span>) <span class="keyword">as</span> total <span class="keyword">FROM</span> tb_name <span class="keyword">GROUP</span> <span class="keyword">BY</span> col1 <span class="keyword">HAVING</span> total <span class="operator">&gt;</span> <span class="number">10</span> <span class="keyword">ORDER</span> <span class="keyword">BY</span> total;</span><br><span class="line"><span class="comment">-- exisit</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> tb1_name <span class="keyword">WHERE</span> <span class="keyword">EXISTS</span> (<span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> tb2_name <span class="keyword">WHERE</span> col1 <span class="operator">=</span> tb1_name.col1 <span class="keyword">AND</span> col2 <span class="operator">&lt;</span> val2);</span><br><span class="line"><span class="comment">-- join</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> tb1_name t1 <span class="keyword">INNER</span> <span class="keyword">JOIN</span> tb2_name t2 <span class="keyword">ON</span> t1.col1 <span class="operator">=</span> t2.col1;</span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> tb1_name t1 <span class="keyword">LEFT</span> <span class="keyword">JOIN</span> tb2_name t2 <span class="keyword">ON</span> t1.col1 <span class="operator">=</span> t2.col1;</span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> tb1_name t1 <span class="keyword">RIGHT</span> <span class="keyword">JOIN</span> tb2_name t2 <span class="keyword">ON</span> t1.col1 <span class="operator">=</span> t2.col1;</span><br><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> tb_name t1, tb_name t2 <span class="keyword">WHERE</span> t1.col1 <span class="operator">=</span> t2.col1 <span class="keyword">AND</span> t1.col2 <span class="operator">!=</span> t2.col2;</span><br><span class="line"><span class="comment">-- aggregate functions</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="built_in">MIN</span>(col1) <span class="keyword">FROM</span> tb_name;</span><br><span class="line"><span class="keyword">SELECT</span> <span class="built_in">MAX</span>(col1) <span class="keyword">FROM</span> tb_name;</span><br><span class="line"><span class="keyword">SELECT</span> <span class="built_in">AVG</span>(col1) <span class="keyword">FROM</span> tb_name;</span><br><span class="line"><span class="keyword">SELECT</span> <span class="built_in">SUM</span>(col1) <span class="keyword">FROM</span> tb_name;</span><br><span class="line"><span class="keyword">SELECT</span> <span class="built_in">COUNT</span>(<span class="operator">*</span>) <span class="keyword">FROM</span> tb_name;</span><br><span class="line"><span class="comment">-- count like all aggregate functions, it does not count null as a distinct value</span></span><br><span class="line"><span class="keyword">SELECT</span> <span class="built_in">COUNT</span>(col1) <span class="keyword">FROM</span> tb_name;</span><br><span class="line"><span class="keyword">SELECT</span> <span class="built_in">COUNT</span>(<span class="keyword">DISTINCT</span> col1, col2) <span class="keyword">FROM</span> tb_name;</span><br><span class="line"><span class="comment">-- insert</span></span><br><span class="line">INSER <span class="keyword">INTO</span> tb1_name (col1, col2, col3) <span class="keyword">VALUES</span>(val1, val2, val3);</span><br><span class="line">INSER <span class="keyword">INTO</span> tb1_name (col1, col2, col3) <span class="keyword">VALUES</span>(val1, val2, val3), (val4, val5, val6), (val7, val8, val9);</span><br><span class="line"><span class="comment">-- update</span></span><br><span class="line">UPDATE tb_name <span class="keyword">SET</span> col1 <span class="operator">=</span> val1, col2 <span class="operator">=</span> val2 <span class="keyword">WHERE</span> col1 <span class="operator">=</span> val1;</span><br><span class="line"><span class="comment">-- delete</span></span><br><span class="line"><span class="keyword">DELETE</span> <span class="keyword">FROM</span> tb_name <span class="keyword">WHERE</span> col1 <span class="operator">=</span> val1;</span><br></pre></td></tr></table></figure>
+
+<h2 id="管理操作"><a href="#管理操作" class="headerlink" title="管理操作"></a>管理操作</h2><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">USE information_schema</span><br><span class="line"><span class="comment">-- db size</span></span><br><span class="line"><span class="keyword">SELECT</span> TABLE_SCHEMA, ROUND(<span class="built_in">SUM</span>(DATA_LENGTH<span class="operator">/</span><span class="number">1024</span><span class="operator">/</span><span class="number">1024</span>), <span class="number">2</span>) <span class="keyword">as</span> SIZE_MB <span class="keyword">FROM</span> TABLES <span class="keyword">GROUP</span> <span class="keyword">BY</span> TABLE_SCHEMA <span class="keyword">ORDER</span> <span class="keyword">BY</span> SIZE_MB <span class="keyword">DESC</span>;</span><br><span class="line"><span class="comment">--- table size</span></span><br><span class="line"><span class="keyword">SELECT</span> TABLE_NAME, DATA_LENGTH <span class="operator">+</span> INDEX_LENGTH, TABLE_ROWS, ROUND((DATA_LENGTH <span class="operator">+</span> INDEX_LENGTH)<span class="operator">/</span><span class="number">1024</span><span class="operator">/</span><span class="number">1024</span>, <span class="number">2</span>) <span class="keyword">as</span> SIZE_MB <span class="keyword">FROM</span> TABLES <span class="keyword">WHERE</span> TABLE_SCHEMA<span class="operator">=</span><span class="string">&#x27;tb_name&#x27;</span> <span class="keyword">ORDER</span> <span class="keyword">BY</span> SIZE_MB;</span><br></pre></td></tr></table></figure>
+
+<p>注意：如果密码中带有小数点，如 <code>abc.123</code>，在命令行中输入密码 <code>-p[password]</code> 时，需要给密码加个单引号，即 <code>-p&#39;abc.123&#39;</code>, 而不是 <code>-pabc.123</code>，这样会出错。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> mysql status</span></span><br><span class="line">SHOW STATUS;</span><br><span class="line"><span class="meta">#</span><span class="bash"> mysql variables</span></span><br><span class="line">SHOW VARIABLES</span><br><span class="line"><span class="meta">#</span><span class="bash"> import</span></span><br><span class="line">mysql -h host -u root -p[password] [-D] db_name &lt; file.sql</span><br><span class="line"><span class="meta">#</span><span class="bash"> backup</span></span><br><span class="line">mysqldumb -h host -u user_name -p[password] -v --databases db_name &gt; dump.sql</span><br><span class="line"><span class="meta">#</span><span class="bash"> fix: A dump made using PowerShell on Windows with output redirection creates a file that has UTF-16 encoding:</span></span><br><span class="line">mysqldumb -h host -u user_name -p[password] -v --databases db_name --result-file=dump.sql</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xiangrenya.github.io/2020/04/14/%E5%B8%B8%E7%94%A8%E7%9A%84%20SQL%20%E8%AF%AD%E5%8F%A5/" data-id="ckogktyhb0005m09f2zake9i2" data-title="常用的 SQL 语句" class="article-share-link">Teilen</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/04/13/Windows%20%E7%B3%BB%E7%BB%9F%E4%B8%8B%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E8%BF%9E%E6%8E%A5%20CentOS%207%20%E7%B3%BB%E7%BB%9F/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">Windows 系统下远程桌面连接 CentOS 7 系统</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Kategorien</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/api/" rel="tag">api</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/centos/" rel="tag">centos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jwt/" rel="tag">jwt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ssh/" rel="tag">ssh</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/terminal/" rel="tag">terminal</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/yApi/" rel="tag">yApi</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/api/" style="font-size: 10px;">api</a> <a href="/tags/centos/" style="font-size: 10px;">centos</a> <a href="/tags/jwt/" style="font-size: 10px;">jwt</a> <a href="/tags/mysql/" style="font-size: 10px;">mysql</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a> <a href="/tags/terminal/" style="font-size: 10px;">terminal</a> <a href="/tags/yApi/" style="font-size: 10px;">yApi</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">May 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">April 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">December 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/04/14/%E5%B8%B8%E7%94%A8%E7%9A%84%20SQL%20%E8%AF%AD%E5%8F%A5/">常用的 SQL 语句</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/13/Windows%20%E7%B3%BB%E7%BB%9F%E4%B8%8B%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E8%BF%9E%E6%8E%A5%20CentOS%207%20%E7%B3%BB%E7%BB%9F/">Windows 系统下远程桌面连接 CentOS 7 系统</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/12/%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7%E8%AE%BE%E7%BD%AE%E7%BD%91%E7%BB%9C%E4%BB%A3%E7%90%86/">命令行工具设置网络代理</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/01/%E5%8F%AF%E8%A7%86%E5%8C%96%E6%8E%A5%E5%8F%A3%E7%AE%A1%E7%90%86/">可视化接口管理</a>
+          </li>
+        
+          <li>
+            <a href="/2019/05/01/%E6%8E%A5%E5%8F%A3%E5%AE%9A%E4%B9%89%E8%A7%84%E8%8C%83%20REST/">接口定义规范 REST</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 Allen<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
