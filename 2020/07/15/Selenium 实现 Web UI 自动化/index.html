@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Selenium 实现 Web UI 自动化 | 网络日记</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="前言由于经常需要登录公司的租户平台导入多语言，以及排查一些 web 页面的问题，每次都要输入不同的账号等等这些人肉且频繁无脑的操作，直到我看到 selenium 之后，这一切发生了改观，可以通过 python3 + selenium3，来实现部分 web ui 的自动化，提高了做事的效率。 安装 selenium1pip install selenium  如果在安装过程中遇到网络连接异常的问题，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Selenium 实现 Web UI 自动化">
+<meta property="og:url" content="https://xiangrenya.github.io/2020/07/15/Selenium%20%E5%AE%9E%E7%8E%B0%20Web%20UI%20%E8%87%AA%E5%8A%A8%E5%8C%96/index.html">
+<meta property="og:site_name" content="网络日记">
+<meta property="og:description" content="前言由于经常需要登录公司的租户平台导入多语言，以及排查一些 web 页面的问题，每次都要输入不同的账号等等这些人肉且频繁无脑的操作，直到我看到 selenium 之后，这一切发生了改观，可以通过 python3 + selenium3，来实现部分 web ui 的自动化，提高了做事的效率。 安装 selenium1pip install selenium  如果在安装过程中遇到网络连接异常的问题，">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-07-14T16:00:00.000Z">
+<meta property="article:modified_time" content="2021-05-09T10:45:12.318Z">
+<meta property="article:author" content="Allen">
+<meta property="article:tag" content="selenium">
+<meta property="article:tag" content="python">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="网络日记" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">网络日记</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">写字的地方</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS 订阅"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="搜索"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://xiangrenya.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Selenium 实现 Web UI 自动化" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2020/07/15/Selenium%20%E5%AE%9E%E7%8E%B0%20Web%20UI%20%E8%87%AA%E5%8A%A8%E5%8C%96/" class="article-date">
+  <time class="dt-published" datetime="2020-07-14T16:00:00.000Z" itemprop="datePublished">2020-07-15</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/%E8%87%AA%E5%8A%A8%E5%8C%96/">自动化</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Selenium 实现 Web UI 自动化
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>由于经常需要登录公司的租户平台导入多语言，以及排查一些 web 页面的问题，每次都要输入不同的账号等等这些人肉且频繁无脑的操作，直到我看到 selenium 之后，这一切发生了改观，可以通过 python3 + selenium3，来实现部分 web ui 的自动化，提高了做事的效率。</p>
+<h2 id="安装-selenium"><a href="#安装-selenium" class="headerlink" title="安装 selenium"></a>安装 selenium</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install selenium</span><br></pre></td></tr></table></figure>
+
+<p>如果在安装过程中遇到网络连接异常的问题，可以看我之前写的一篇文章：<a href="%E5%91%BD%E4%BB%A4%E8%A1%8C%E5%B7%A5%E5%85%B7%E8%AE%BE%E7%BD%AE%E7%BD%91%E7%BB%9C%E4%BB%A3%E7%90%86.md">命令行工具设置网络代理</a></p>
+<h2 id="下载-chrome-浏览器驱动"><a href="#下载-chrome-浏览器驱动" class="headerlink" title="下载 chrome 浏览器驱动"></a>下载 chrome 浏览器驱动</h2><p>一般平时使用 chrome 浏览器，所以下载 chrome 浏览器驱动，下载地址：<a target="_blank" rel="noopener" href="http://chromedriver.chromium.org/">http://chromedriver.chromium.org</a></p>
+<p>解压到 c 盘，路径为 <code>C:\chromedriver_win32\chromedriver.exe</code>，同时要记得将 <code>C:\chromedriver_win32</code> 路径加入到系统路径下，找到 电脑 &gt; 属性 &gt; 高级系统设置 &gt; 环境变量 &gt; 系统变量 &gt; Path，然后添加 <code>C:\chromedriver_win32</code></p>
+<h2 id="创建浏览器驱动对象"><a href="#创建浏览器驱动对象" class="headerlink" title="创建浏览器驱动对象"></a>创建浏览器驱动对象</h2><p>最简单的创建浏览器 driver，如下所示</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line">driver = webdriver.Chrome()</span><br></pre></td></tr></table></figure>
+
+<p>由于现在主流的网站项目，都是前后端分离，部分元素是需要等待接口返回，异步加载后渲染的，所以会出现无法及时定位到元素的情况，我们可以通过隐式等待的方法，作用于整个 driver 的生命周期，如下代码示例，当第一次无法定位到指定元素时，driver 会等待 5s，如果 5s 后，还是没有找到该元素，才会抛出错误。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">driver.implicitly_wait(<span class="number">5</span>)</span><br></pre></td></tr></table></figure>
+
+<p>每次通过 driver 打开浏览器，都是页面顶部出现一个提示：Chrome正受到自动软件测试的控制，这个提示遮挡了页面的可视区域，我们可以通过配置 chrome_options 把这个提示去掉</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">option = webdriver.ChromeOptions()</span><br><span class="line">option.add_experimental_option(<span class="string">&#x27;useAutomationExtension&#x27;</span>, <span class="literal">False</span>)</span><br><span class="line">option.add_experimental_option(<span class="string">&#x27;excludeSwitches&#x27;</span>, [<span class="string">&#x27;enable-automation&#x27;</span>])</span><br><span class="line">driver = webdriver.Chrome(chrome_options=option)</span><br></pre></td></tr></table></figure>
+
+<p>在运行 python 脚本结束后，浏览器 driver 会自动关闭，后来发现是由于变量 driver 是被定义在函数里，当该函数执行完，里面的变量会被销毁，所以函数内 driver 也不存在，所以浏览器会自动退出，所以如果希望脚本执行完，浏览器保持不退出，可以将 driver 定义全局变量里。</p>
+<p>最完整创建浏览器 driver，如下所示</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_driver</span>():</span></span><br><span class="line">    option = webdriver.ChromeOptions()</span><br><span class="line">    option.add_experimental_option(<span class="string">&#x27;useAutomationExtension&#x27;</span>, <span class="literal">False</span>)</span><br><span class="line">    option.add_experimental_option(<span class="string">&#x27;excludeSwitches&#x27;</span>, [<span class="string">&#x27;enable-automation&#x27;</span>])</span><br><span class="line">    driver = webdriver.Chrome(chrome_options=option)</span><br><span class="line">    driver.implicitly_wait(<span class="number">5</span>)</span><br><span class="line">    driver.maximize_window()</span><br><span class="line">    <span class="keyword">return</span> driver</span><br><span class="line">driver = get_driver()</span><br></pre></td></tr></table></figure>
+
+<h2 id="用户登录实战"><a href="#用户登录实战" class="headerlink" title="用户登录实战"></a>用户登录实战</h2><p>下面来一个简单的网站登录的实战过程，代码示例如下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">login</span>(<span class="params">driver, url, username, password</span>):</span></span><br><span class="line">    driver.get(url)</span><br><span class="line">    driver.find_element_by_css_selector(<span class="string">&#x27;#username&#x27;</span>).send_keys(username)</span><br><span class="line">    driver.find_element_by_css_selector(<span class="string">&#x27;#password&#x27;</span>).send_keys(password)</span><br><span class="line">    driver.find_element_by_css_selector(<span class="string">&#x27;#login&#x27;</span>).click()</span><br><span class="line">driver = get_driver()</span><br><span class="line">login(driver, <span class="string">&#x27;https://xxx.com/login.html&#x27;</span>, <span class="string">&#x27;abc&#x27;</span>, <span class="string">&#x27;123456&#x27;</span>)</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xiangrenya.github.io/2020/07/15/Selenium%20%E5%AE%9E%E7%8E%B0%20Web%20UI%20%E8%87%AA%E5%8A%A8%E5%8C%96/" data-id="ckogmb10f001bdm9f2ouj2x9h" data-title="Selenium 实现 Web UI 自动化" class="article-share-link">分享</a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/selenium/" rel="tag">selenium</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2021/03/12/%E6%9C%AC%E5%9C%B0%E8%B0%83%E8%AF%95%20npm%20%E6%A8%A1%E5%9D%97/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">前一篇</strong>
+      <div class="article-nav-title">
+        
+          本地调试 npm 模块
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/06/15/Python%20%E8%87%AA%E5%8A%A8%E4%B8%8A%E4%BC%A0%20CDN%20%E8%B5%84%E6%BA%90%E5%88%B0%20OSS%20Bucket/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">后一篇</strong>
+      <div class="article-nav-title">Python 自动上传 CDN 资源到 OSS Bucket</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF/">前端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%90%8E%E7%AB%AF/">后端</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%B7%A5%E5%85%B7/">工具</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9C%8D%E5%8A%A1%E5%99%A8/">服务器</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%87%AA%E5%8A%A8%E5%8C%96/">自动化</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/api/" rel="tag">api</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/centos/" rel="tag">centos</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/excel/" rel="tag">excel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/jwt/" rel="tag">jwt</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mysql/" rel="tag">mysql</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm/" rel="tag">npm</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/oss/" rel="tag">oss</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/python/" rel="tag">python</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/selenium/" rel="tag">selenium</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shell/" rel="tag">shell</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/terminal/" rel="tag">terminal</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/yApi/" rel="tag">yApi</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/03/">三月 2021</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">七月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">六月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">三月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">一月 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/12/">十二月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">四月 2019</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/03/12/%E6%9C%AC%E5%9C%B0%E8%B0%83%E8%AF%95%20npm%20%E6%A8%A1%E5%9D%97/">本地调试 npm 模块</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/15/Selenium%20%E5%AE%9E%E7%8E%B0%20Web%20UI%20%E8%87%AA%E5%8A%A8%E5%8C%96/">Selenium 实现 Web UI 自动化</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/15/Python%20%E8%87%AA%E5%8A%A8%E4%B8%8A%E4%BC%A0%20CDN%20%E8%B5%84%E6%BA%90%E5%88%B0%20OSS%20Bucket/">Python 自动上传 CDN 资源到 OSS Bucket</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/12/Python%20%E8%AF%BB%E5%8F%96%20Excel%20%E6%96%87%E4%BB%B6%E7%9A%84%E6%95%B0%E6%8D%AE/">Python 读取 Excel 文件的数据</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/14/%E5%B8%B8%E7%94%A8%E7%9A%84%20SQL%20%E8%AF%AD%E5%8F%A5/">常用的 SQL 语句</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2021 Allen<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.4.1.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
